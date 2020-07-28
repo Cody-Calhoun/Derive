@@ -12,31 +12,35 @@ module.exports = {
 
   async login(req, res) {
     const { email, password } = req.body;
-    try {
-      const user = await User.findOne({ email });
 
-      if (user === null) {
-        throw new Error("Please check your email and password.");
-      }
+    const user = await User.findOne({ email });
 
-      const result = await bcrypt.compare(password, user.passsword);
-      if (result === false) {
-        throw new Error("Please check your email and password.");
-      }
-        
-        const token = jwt.sign({
-            id: user._id,
-            email: user._email
-        }, process.env.SECRET_KEY);
-
-        res.cookie('token', token {
-            httpOnly: true
-        });
-        res.json({ message: "success", token });
-    } catch (e) {
-      res
-        .status(400)
-        .json({ message: "Please check your email and password." });
+    if (user === null) {
+      return res.sendStatus(400);
     }
+
+    const result = await bcrypt.compare(password, user.passsword);
+
+    if (result === false) {
+      return res.sendStatus(400);
+    }
+
+    const token = jwt.sign(
+      {
+        id: user._id,
+        email: user.email,
+      },
+      process.env.SECRET_KEY
+    );
+
+    res.cookie("token", token, {
+      httpOnly: true,
+    });
+    res.json({ message: "success", token });
   },
+
+  logout(req,res){
+      res.clearCookie('token');
+      res.json({ massage: 'success'});
+  }
 };

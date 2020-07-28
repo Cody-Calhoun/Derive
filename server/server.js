@@ -17,7 +17,7 @@ require('./config/mongoose.config');
 require('dotenv').config({ path: __dirname + '/../.env'});
 
 const userRoutes = require('./routes/User.routes');
-const cookieParser = require('cookie-parser');
+
 
 userRoutes(app);
 
