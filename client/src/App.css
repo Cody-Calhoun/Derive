@@ -12,7 +12,48 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.flightBox{
+  max-width: 100%;
+  border: 1px solid black;
+  padding: 5px;
+  box-sizing: border-box;
+}
 
+.box{
+  box-sizing: border-box;
+}
+
+.calender{
+  width: 60%;
+  height: 400px;
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 5%;
+  border: 1px solid black;
+}
+
+.leftside{
+  width: 30%;
+  display: inline-block;
+  vertical-align: top;
+}
+.tripTable{
+  border: 1px solid black;
+  border-radius: 15px;
+  background-color: azure;
+  
+  margin-bottom: 5px;
+  width: 100%;
+  display: block;
+}
+.addTrip{
+  width: 100%;
+  display: block;
+  
+  border: 1px solid grey;
+  border-radius: 15px;
+  padding: 5px;
+}
 .App-header {
   background-color: #282c34;
   min-height: 100vh;

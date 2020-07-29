@@ -18,6 +18,7 @@ require('dotenv').config({ path: __dirname + '/../.env'});
 
 const userRoutes = require('./routes/User.routes');
 
+require('./routes/Trip.route')(app)
 
 userRoutes(app);
 
