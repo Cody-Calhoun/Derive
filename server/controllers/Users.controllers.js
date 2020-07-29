@@ -6,7 +6,17 @@ const User = require("../models/User.model");
 module.exports = {
   register(req, res) {
     User.create(req.body)
-      .then((newUser) => res.json({ message: "success", id: newUser._id }))
+      .then((newUser) => {
+        const token = jwt.sign({
+            id: newUser._id,
+            email: newUser.email,
+          }, process.env.SECRET_KEY);
+    
+        res.cookie('token', token, {
+          httpOnly: true,
+        })
+        res.json({ message: "success"});
+      })
       .catch((err) => res.status(400).json(err));
   },
 
