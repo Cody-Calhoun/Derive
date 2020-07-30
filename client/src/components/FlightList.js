@@ -1,19 +1,14 @@
 import React, {useState} from 'react'
 import axios from 'axios'
 import moment from 'moment'
-import {Link} from '@reach/router'
+
+
 
 
 const FlightList = (props) => {
+
     const {trip, setTrip} = props
-    const [flight, setFlight] = useState({
-        num: "",
-        airline: "",
-        status: "",
-        date: "",
-        departure: "",
-        arrival: ""
-    })
+    
     const [details, setDetails] = useState({
         num: "",
         airline: ""
@@ -26,6 +21,7 @@ const FlightList = (props) => {
             [e.target.name]: e.target.value
         })
     }
+
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -40,7 +36,6 @@ const FlightList = (props) => {
                     departure: `Departing from ${mainflt.departure.airport} @ ${moment.utc(mainflt.departure.estimated).format(moment.HTML5_FMT.TIME_SECONDS)}`,
                     arrival: `Arriving at ${mainflt.arrival.airport} @ ${moment.utc(mainflt.arrival.estimated).format(moment.HTML5_FMT.TIME_SECONDS)}`
                 }
-                setFlight(hold)
                 console.log(hold)
                 axios.patch(`http://localhost:8000/api/trips/${trip._id}/flight`, hold)
                     .then(response => {
