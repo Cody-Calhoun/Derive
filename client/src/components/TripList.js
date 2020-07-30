@@ -1,12 +1,17 @@
 import React, {useState, useEffect} from 'react'
 import {Link} from '@reach/router'
 import axios from 'axios'
+import TripCalendar from './TripCalendar'
+import 'react-calendar/dist/Calendar.css'
+
 
 
 const TripList = () => {
     const [trip, setTrip] = useState({
         title: "", 
-        description: ""
+        description: "",
+        startDate: "",
+        endDate: ""
     })
     const [myTrips, setMyTrips] = useState([])
 
@@ -31,11 +36,13 @@ const TripList = () => {
         e.preventDefault();
         axios.post('http://localhost:8000/api/trips', trip)
             .then(response => {
+                console.log(response.data)
                 const [...triplist] = myTrips
                 triplist.push(response.data.results)
                 setMyTrips(triplist)
                 setCount(count + 1)
             })
+            .catch(err => console.log(err))
     }
 
 
@@ -81,6 +88,14 @@ const TripList = () => {
                         <input type="text" name="title" value={trip.title} onChange={handleChange} />
                     </div>
                     <div className="form-group row">
+                        <label htmlFor="startDate" >Start Date:</label><br/>
+                        <input type="date" name="startDate" value={trip.startDate} onChange={handleChange} />
+                    </div>
+                    <div className="form-group row">
+                        <label htmlFor="endDate" >End Date:</label><br/>
+                        <input type="date" name="endDate" value={trip.endDate} onChange={handleChange} />
+                    </div>
+                    <div className="form-group row">
                         <label htmlFor="description" >Description:</label><br/>
                         <input type="text" name="description" value={trip.description} onChange={handleChange} />
                     </div>
@@ -93,7 +108,7 @@ const TripList = () => {
             </div>
 
             <div className="calender">
-                <h1>PlaceHolder for Calendar</h1>
+                <TripCalendar events={myTrips}/>
             </div>
         </div>
     )

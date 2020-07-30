@@ -26,7 +26,7 @@ const ViewTrip = (props) => {
         if(tabs.fltTab === true){
             setTabs({
                 fltTab: false,
-                hotelTab: false,
+                hotelTab: false, 
                 resTab: false
             })
         }
@@ -44,10 +44,10 @@ const ViewTrip = (props) => {
             <header className="viewTripHeader">
                 <h1>{trip.title} Details</h1>
                 <Link to='/trips'>All Trips</Link>
-                <div class="d-flex justify-content-around">
-                    <div class="p-2"><button onClick={fltTabClick} name="fltTab" value={tabs.fltTab}> Flights</button></div>
-                    <div class="p-2">Flex item 2</div>
-                    <div class="p-2">Flex item 3</div>
+                <div className="d-flex justify-content-around">
+                    <div className="p-2"><button onClick={fltTabClick} name="fltTab" value={tabs.fltTab}> Flights</button></div>
+                    <div className="p-2">Flex item 2</div>
+                    <div className="p-2">Flex item 3</div>
                 </div>
             </header><hr/>
             <p><b>Description:</b> {trip.description} </p>

@@ -17,7 +17,7 @@ export default function Login() {
             email,
             password
         }, {withCredentials: true})
-            .then(() => navigate('/api/user/:id/dashboard'))
+            .then(() => navigate('/user/:id/dashboard'))
             .catch(() => setErr('Please check your credentials'))
     }
 
