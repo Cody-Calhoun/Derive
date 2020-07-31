@@ -12,21 +12,27 @@ export default function RegistrationForm(){
     });
 
     function handleChange(e) {
-        const { name, value } = e.target;
+        // const { name, value } = e.target;
 
         setFormState({
             ...formState,
-            [name]: value
+            [e.target.name]: e.target.value
         });
     }
 
     function handleSubmit(e){
         e.preventDefault();
+        console.log('hello');
 
         axios.post('http://localhost:8000/api/users', formState, {
             withCredentials: true
         })
-            .then(() => navigate('/api/user/:id/dashboard'))
+        
+            .then(res => {
+                if(res.data.message === 'success'){
+                    navigate('/user/dashboard')
+                }
+            })
             .catch(console.log);
     }
 
@@ -37,6 +43,7 @@ export default function RegistrationForm(){
                 <label htmlFor="firstName">First Name:</label>
                 <input 
                 type="text"
+                name="firstName"
                 value={formState.firstName}
                 onChange={handleChange}
                 />
@@ -45,6 +52,7 @@ export default function RegistrationForm(){
                 <label htmlFor="lastName">Last Name:</label>
                 <input 
                 type="text"
+                name="lastName"
                 value={formState.lastName}
                 onChange={handleChange}
                 />
@@ -53,6 +61,7 @@ export default function RegistrationForm(){
                 <label htmlFor="email">Email:</label>
                 <input 
                 type="text"
+                name="email"
                 value={formState.email}
                 onChange={handleChange}
                 />
@@ -61,6 +70,7 @@ export default function RegistrationForm(){
                 <label htmlFor="password">Password:</label>
                 <input 
                 type="password"
+                name="password"
                 value={formState.password}
                 onChange={handleChange}
                 />
@@ -69,6 +79,7 @@ export default function RegistrationForm(){
                 <label htmlFor="passwordConfirmation">Confirm Password:</label>
                 <input 
                 type="password"
+                name="passwordConfirmation"
                 value={formState.passwordConfirmation}
                 onChange={handleChange}
                 />
