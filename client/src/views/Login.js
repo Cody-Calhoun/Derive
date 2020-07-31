@@ -37,7 +37,7 @@ export default function Login() {
         //   console.log(decoded)
         //   console.log(res)
         localStorage.setItem("token", decoded)
-        navigate("/user/dashboard")})
+        navigate("/my_Trips")})
       .catch(() => setErr("Please check your credentials"));
     // axios.post(url, { email, password }, { withCredentials: true })
     //     .then(res => {
