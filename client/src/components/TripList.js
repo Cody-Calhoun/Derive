@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "@reach/router";
-import axios from "axios";
-import TripCalendar from "./TripCalendar";
-import "react-calendar/dist/Calendar.css";
-// import ls from 'local-storage';
+import React, {useState, useEffect} from 'react'
+import {Link} from '@reach/router'
+import axios from 'axios'
+import TripCalendar from './TripCalendar'
+import 'react-calendar/dist/Calendar.css'
+import Scheduler from './Scheduler'
+
+
 
 const TripList = () => {
     const [loggedUser, setLoggedUser] = useState({ name: "" })
@@ -153,6 +155,10 @@ const TripList = () => {
                 value={trip.description}
                 onChange={handleChange}
               />
+
+            <div className="calender">
+                {/* <TripCalendar events={myTrips}/> */}
+                <Scheduler/>
             </div>
             <div className="form-group row">
               <input type="submit" value="Plan Trip" />

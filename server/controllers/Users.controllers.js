@@ -64,4 +64,5 @@ module.exports = {
   getUser(res,res){
     User.findOne({})
   }
+  
 };

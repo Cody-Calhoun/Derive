@@ -25,11 +25,12 @@
 
 .calender{
   width: 60%;
-  height: 400px;
+  height: 450px;
   display: inline-block;
   vertical-align: top;
   margin-left: 5%;
   border: 1px solid black;
+  overflow: scroll;
 }
 
 .leftside{

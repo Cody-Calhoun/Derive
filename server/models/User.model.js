@@ -2,8 +2,6 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
 const {TripSchema } = require('./Trip.model'); 
 
-const { authenticate} = require('../config/jwt.config');
-
 const UserSchema = new mongoose.Schema({
     firstName:{
         type: String,
