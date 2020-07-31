@@ -1,22 +1,26 @@
 import React from 'react';
-
+import axios from 'axios';
 import './App.css';
 import Dash from './components/Dash';
 import Login from './views/Login';
-import {Link, Router} from '@reach/router';
+import {Link, Router, navigate} from '@reach/router';
 import ViewTrip from './components/ViewTrip';
 import TripList from './components/TripList';
+import Dashboard from './components/Dashboard';
+import RegistrationForm from './components/RegistrationForm';
 
-// axios.interceptors.response.use(response => response, () => navigate('/login'));
+axios.interceptors.response.use(response => response, () => navigate('/login'));
 
 function App() {
   return (
     <div className="App">
       <Router>
-        <Login path="login"/>
+        <Login path="/login" default/>
         <Dash path='/add_flight/:id'/>
         <ViewTrip path='/trip/:id'/>
-        <TripList path='/my_Trips' default />
+        <TripList path='/my_Trips'/>
+        <Dashboard path='/user/dashboard'/>
+        <RegistrationForm path='/user/register'/>
       </Router>
 
     </div>

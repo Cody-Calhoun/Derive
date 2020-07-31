@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcrypt');
+const {TripSchema } = require('./Trip.model'); 
 
 const { authenticate} = require('../config/jwt.config');
 
@@ -25,8 +26,8 @@ const UserSchema = new mongoose.Schema({
     password: {
         type: String,
         minlength: [8, "Please enter a password of at least 8 characters."]
-    }
-
+    },
+    trips: [TripSchema]
 }, {timestamps: true})
 
 UserSchema.virtual('passwordConfirmation', {
@@ -44,7 +45,7 @@ UserSchema.pre('validate', function(next){
 UserSchema.pre('save', function(next){
     bcrypt.hash(this.password, 10)
         .then(hashPw => {
-            this.pasword = hashPw;
+            this.password = hashPw;
             next();
     });
 });

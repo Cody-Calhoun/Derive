@@ -6,7 +6,7 @@ module.exports = app => {
     app.post('/api/users', userCtl.register);
     app.post('/api/users/login', userCtl.login);
 // this authenticate is for us to dictate who can see what.
-    // app.get('/api/users/:id', authenticate, userCtl.getAll)
+    app.get('/api/users', authenticate, userCtl.getAll)
     
     app.delete('/api/users/logout', userCtl.logout);
 
