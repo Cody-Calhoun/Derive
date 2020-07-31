@@ -1,3 +1,4 @@
+import { navigate } from '@reach/router';
 import React from "react";
 import {
   GoogleMap,
@@ -198,6 +199,7 @@ function Search({ panTo }) {
           </ComboboxList>
         </ComboboxPopover>
       </Combobox>
+      <div className="p-2"><button onClick={e => {navigate("/trip/:id")}}> Back</button></div>
     </div>
   );
 }
