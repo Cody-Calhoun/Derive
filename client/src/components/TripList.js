@@ -3,6 +3,7 @@ import {Link} from '@reach/router'
 import axios from 'axios'
 import TripCalendar from './TripCalendar'
 import 'react-calendar/dist/Calendar.css'
+import Scheduler from './Scheduler'
 
 
 
@@ -108,7 +109,8 @@ const TripList = () => {
             </div>
 
             <div className="calender">
-                <TripCalendar events={myTrips}/>
+                {/* <TripCalendar events={myTrips}/> */}
+                <Scheduler/>
             </div>
         </div>
     )

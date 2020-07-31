@@ -12,6 +12,14 @@ const TripSchema = new mongoose.Schema({
         required: [true, "This field is required"],
         minlength: [5, "Title must be at keast 5 characters."]
     },
+    startDate: {
+        type: Date,
+        min: [new Date(), "Date must be in the future."]
+    },
+    endDate:{
+        type: Date,
+        min: [new Date(), "Date must be in the future."]
+    },
     flights : [FlightSchema]
 }, {timestamps: true})
 

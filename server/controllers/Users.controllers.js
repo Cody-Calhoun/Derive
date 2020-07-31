@@ -53,4 +53,5 @@ module.exports = {
       res.clearCookie('token');
       res.json({ massage: 'success'});
   }
+  
 };
