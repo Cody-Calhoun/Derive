@@ -59,10 +59,12 @@ module.exports = {
 
   addTrip(req,res){
     User.findOneAndUpdate({})
-  }
+  },
 
-  getUser(res,res){
-    User.findOne({})
+  getUser(req,res){
+    User.findOne({_id: req.params.id})
+      .then(data => res.json({ message: "success", results: data}))
+      .catch(err => res.json({ message: "error", results: err}))
   }
   
 };

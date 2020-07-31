@@ -4,12 +4,21 @@ import { navigate, Link } from "@reach/router";
 import RegistrationForm from "../components/RegistrationForm";
 import airplane from "../images/airplane.png";
 import derive from "../images/derive.png";
+import jwt_decode from 'jwt-decode';
 // import ls from 'local-storage'
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [err, setErr] = useState("");
+
+//   const useStateWithLocalStorage = localStorageKey => {
+//     const [value, setValue] = useState(
+//       localStorage.getItem(localStorageKey) || ''
+//     );
+//     const [value, setValue] = useStateWithLocalStorage(
+//         'myValueInLocalStorage'
+//       );
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -24,7 +33,10 @@ export default function Login() {
         { withCredentials: true }
       )
       .then(res => {
-        localStorage.setItem("token", token)
+          var decoded = jwt_decode(res.data.token)
+        //   console.log(decoded)
+        //   console.log(res)
+        localStorage.setItem("token", decoded)
         navigate("/user/dashboard")})
       .catch(() => setErr("Please check your credentials"));
     // axios.post(url, { email, password }, { withCredentials: true })
