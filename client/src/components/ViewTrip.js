@@ -41,6 +41,7 @@ const ViewTrip = (props) => {
 
     return (
         <div className="container">
+            
             <header className="viewTripHeader">
                 <h1>{trip.title} Details</h1>
                 <Link to='/trips'>All Trips</Link>

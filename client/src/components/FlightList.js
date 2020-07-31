@@ -80,7 +80,15 @@ const FlightList = (props) => {
                             </div>
                             <div className="form-group row">
                                 <label htmlFor="airline" className="col-sm-4"> Airline</label>
-                                <input type="text" name="airline" value={details.airline} onChange={handleChange} className="col-sm-6 form-control"/>
+                                <select name="airline" value={details.airline} onChange={handleChange} className="col-sm-6 form-control">
+                                    <option selected disabled value="">Choose an airline</option>
+                                    <option value="Southwest Airlines">Southwest Airlines</option>
+                                    <option value="Delta Air Lines">Delta Air Lines</option>
+                                    <option value="American Airlines">American Airlines</option>
+                                    <option value="Spirit Airlines">Spirit Airlines</option>
+                                    <option value="Alaska Airlines">Alaska Airlines</option>
+                                    <option value="United Airlines">United Airlines</option>
+                                </select>
                             </div>
                             <div className="form-group row">
                                 <input type="submit" value="Submit" className="col-sm-4"/>
@@ -99,7 +107,15 @@ const FlightList = (props) => {
                         </div>
                         <div className="form-group row">
                             <label htmlFor="airline" className="col-sm-4"> Airline</label>
-                            <input type="text" name="airline" value={details.airline} onChange={handleChange} className="col-sm-6 form-control"/>
+                            <select name="airline" value={details.airline} onChange={handleChange} className="col-sm-6 form-control">
+                                <option selected disabled value="">Choose an airline</option>
+                                <option value="Southwest Airlines">Southwest Airlines</option>
+                                <option value="Delta Air Lines">Delta Air Lines</option>
+                                <option value="American Airlines">American Airlines</option>
+                                <option value="Spirit Airlines">Spirit Airlines</option>
+                                <option value="Alaska Airlines">Alaska Airlines</option>
+                                <option value="United Airlines">United Airlines</option>
+                            </select>
                         </div>
                         <div className="form-group row">
                             <input type="submit" value="Submit" className="col-sm-4"/>
